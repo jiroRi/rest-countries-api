@@ -5,6 +5,16 @@ export const CountryContext = React.createContext();
 
 export const CountryProvider = ({ children }) => {
   const [countries, setCountries] = useState([]);
+  const [countryDetails, setCountryDetails] = useState({
+    nativeName: "",
+    population: "",
+    region: "",
+    subRegion: "",
+    capital: "",
+    topLevelDomain: "",
+    currencies: "",
+    languages: "",
+  });
 
   useEffect(() => {
     axios
@@ -17,7 +27,14 @@ export const CountryProvider = ({ children }) => {
   }, []);
 
   return (
-    <CountryContext.Provider value={{ countries, setCountries }}>
+    <CountryContext.Provider
+      value={{
+        countries,
+        setCountries,
+        countryDetails,
+        setCountryDetails,
+      }}
+    >
       {children}
     </CountryContext.Provider>
   );
