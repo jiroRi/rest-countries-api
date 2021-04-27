@@ -5,6 +5,7 @@ export const CountryContext = React.createContext();
 
 export const CountryProvider = ({ children }) => {
   const [countries, setCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
   const [countryDetails, setCountryDetails] = useState({
     nativeName: "",
     population: "",
@@ -21,7 +22,7 @@ export const CountryProvider = ({ children }) => {
       .get("https://restcountries.eu/rest/v2/all")
       .then((response) => {
         setCountries(response.data);
-        console.log(response.data);
+        setFilteredCountries(response.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -33,6 +34,8 @@ export const CountryProvider = ({ children }) => {
         setCountries,
         countryDetails,
         setCountryDetails,
+        filteredCountries,
+        setFilteredCountries,
       }}
     >
       {children}

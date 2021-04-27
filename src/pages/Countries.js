@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { Card } from "../containers";
 
 export const Countries = () => {
-  const { countries } = useContext(CountryContext);
+  const { filteredCountries } = useContext(CountryContext);
 
   return (
     <>
-      {countries.map((country) => (
+      {filteredCountries.map((country) => (
         <Link to={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
           <Card
             flag={country.flag}
