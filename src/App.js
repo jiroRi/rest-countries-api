@@ -10,7 +10,7 @@ const App = () => {
       <CountryProvider>
         <Switch>
           <Route path="/" exact component={Countries} />
-          <Route path="/country/:name" component={Information} />
+          <Route path="/country/:code" component={Information} />
         </Switch>
       </CountryProvider>
     </Router>

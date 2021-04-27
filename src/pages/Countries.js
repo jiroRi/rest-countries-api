@@ -10,7 +10,7 @@ export const Countries = () => {
   return (
     <>
       {countries.map((country) => (
-        <Link to={`/country/${country.name}`} key={country.alpha3Code}>
+        <Link to={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
           <Card
             flag={country.flag}
             name={country.name}
