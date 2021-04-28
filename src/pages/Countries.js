@@ -1,14 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { CountryContext } from "../CountryContext";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-import { Card } from "../containers";
+import { Card, ControlPanel } from "../containers";
 
 export const Countries = () => {
-  const { filteredCountries } = useContext(CountryContext);
+  const { filteredCountries, setFilteredCountries } = useContext(
+    CountryContext
+  );
+
+  useEffect(() => {
+    axios
+      .get("https://restcountries.eu/rest/v2/all")
+      .then((response) => {
+        setFilteredCountries(response.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
+      <ControlPanel />
       {filteredCountries.map((country) => (
         <Link to={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
           <Card

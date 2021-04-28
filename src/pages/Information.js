@@ -3,11 +3,14 @@ import styled from "styled-components";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 
+import { BackButton } from "../components/ControlPanel";
+
 export const Information = ({ match }) => {
   const [currentCountry, setCurrentCountry] = useState(match.params.code);
   const [information, setInformation] = useState({
     borders: [],
   });
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
 
   const setBorderAsLink = (border) => {
@@ -20,24 +23,31 @@ export const Information = ({ match }) => {
       .get(`https://restcountries.eu/rest/v2/alpha/${currentCountry}`)
       .then((response) => {
         setInformation(response.data);
-        console.log(location);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
 
     return setCurrentCountry(location.pathname.replace("/country/", ""));
-  }, [currentCountry, location]);
+  }, [currentCountry, location, match, information]);
 
   return (
-    <Container>
-      <p>{information.name}</p>
-      <p>{information.region}</p>
-      <img src={information.flag} alt={information.name} />
-      {information.borders.map((border) => (
-        <Link to={`/country/${border}`} key={border}>
-          <button onClick={() => setBorderAsLink(border)}>{border}</button>
-        </Link>
-      ))}
-    </Container>
+    <>
+      <BackButton />
+      {loading ? (
+        <p>loading...</p>
+      ) : (
+        <Container>
+          <p>{information.name}</p>
+          <p>{information.region}</p>
+          <img src={information.flag} alt={information.name} />
+          {information.borders.map((border) => (
+            <Link to={`/country/${border}`} key={border}>
+              <button onClick={() => setBorderAsLink(border)}>{border}</button>
+            </Link>
+          ))}
+        </Container>
+      )}
+    </>
   );
 };
 

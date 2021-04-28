@@ -6,11 +6,9 @@ import { Filter, Search, Regions, Region } from "../components/ControlPanel";
 
 export const ControlPanel = () => {
   const [search, setSearch] = useState("");
-  const { filteredCountries, setFilteredCountries, countries } = useContext(
-    CountryContext
-  );
+  const { setFilteredCountries, countries } = useContext(CountryContext);
   const [select, setSelect] = useState("Filter by Region");
-  const [selectActive, setSelectActive] = useState(false);
+  const [selectOpened, setSelectOpened] = useState(false);
 
   useEffect(() => {
     const filter = countries.filter((country) => {
@@ -27,18 +25,15 @@ export const ControlPanel = () => {
       );
     });
     setFilteredCountries(result);
-    console.log(filteredCountries);
   }, [search, select]);
 
   const searchHandler = (event) => {
-    let current = event.target.value;
-    setSearch(current);
-
-    /* current === "" && setFilteredCountries(countries); */
+    setSearch(event.target.value);
   };
 
   const selectHandler = (value) => {
     setSelect(value);
+    setSelectOpened((prevState) => !prevState);
   };
 
   return (
@@ -51,13 +46,13 @@ export const ControlPanel = () => {
       />
       <Filter
         onClick={() => {
-          setSelectActive(!selectActive);
+          setSelectOpened(!selectOpened);
         }}
       >
         {select}
       </Filter>
-      {selectActive ? (
-        <Regions>
+      {selectOpened ? (
+        <Regions opened={setSelectOpened}>
           <Region onClick={() => selectHandler("Africa")}>Africa</Region>
           <Region onClick={() => selectHandler("Americas")}>Americas</Region>
           <Region onClick={() => selectHandler("Asia")}>Asia</Region>
