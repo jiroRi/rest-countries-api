@@ -19,16 +19,22 @@ export const Information = ({ match }) => {
   };
 
   useEffect(() => {
+    let mounted = true;
     axios
       .get(`https://restcountries.eu/rest/v2/alpha/${currentCountry}`)
       .then((response) => {
-        setInformation(response.data);
-        setLoading(false);
+        if (mounted) {
+          setInformation(response.data);
+          setLoading(false);
+        }
       })
       .catch((err) => console.log(err));
 
-    return setCurrentCountry(location.pathname.replace("/country/", ""));
-  }, [currentCountry, location, match, information]);
+    return () => {
+      setCurrentCountry(location.pathname.replace("/country/", ""));
+      mounted = false;
+    };
+  }, [information]);
 
   return (
     <>

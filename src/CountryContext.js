@@ -16,13 +16,13 @@ export const CountryProvider = ({ children }) => {
     currencies: "",
     languages: "",
   });
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then((response) => {
         setCountries(response.data);
-        setFilteredCountries(response.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -36,6 +36,8 @@ export const CountryProvider = ({ children }) => {
         setCountryDetails,
         filteredCountries,
         setFilteredCountries,
+        darkMode,
+        setDarkMode,
       }}
     >
       {children}
