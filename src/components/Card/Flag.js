@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 export const Flag = (props) => {
-  return <Image {...props} />;
+  return <Image {...props} src={props.flag} />;
 };
 
 const Image = styled.img`
@@ -11,9 +11,6 @@ const Image = styled.img`
   height: 160px;
   min-height: 160px;
   border-radius: 4px 4px 0px 0px;
-
-  background-image: url(${(props) => props.flag});
-  background-size: cover;
 
   ${(props) =>
     props.variant === "full" &&

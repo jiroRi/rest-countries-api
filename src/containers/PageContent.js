@@ -4,11 +4,14 @@ import styled from "styled-components";
 export const PageContent = (props) => <Body>{props.children}</Body>;
 
 const Body = styled.div`
+  position: relative;
+
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 24px;
 
   overflow-y: scroll;
+  overflow-x: hidden;
 
   & a {
     display: inline-block;
@@ -34,6 +37,10 @@ const Body = styled.div`
   }
 
   @media ${(props) => props.theme.device.desktopM} {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  @media ${(props) => props.theme.device.desktopL} {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 `;

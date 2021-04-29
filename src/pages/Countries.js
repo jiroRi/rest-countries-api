@@ -20,6 +20,7 @@ export const Countries = () => {
         setLoading(false);
       })
       .catch((err) => console.log(err));
+    // eslint-disable-next-line
   }, []);
 
   const countries = filteredCountries.map((country) => (

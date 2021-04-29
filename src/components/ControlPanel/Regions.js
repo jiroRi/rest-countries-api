@@ -9,12 +9,13 @@ export const Regions = (props) => {
     return () => {
       document.removeEventListener("mousedown", closeSelectHandler);
     };
+    // eslint-disable-next-line
   }, []);
 
   const closeSelectHandler = (event) => {
     if (selectRef.current.contains(event.target)) return;
 
-    props.opened(false);
+    props.setOpened(!props.opened);
   };
 
   return (
@@ -28,6 +29,7 @@ const Container = styled.div`
   position: absolute;
   top: 6rem;
   left: 0;
+  z-index: 10000;
 
   display: flex;
   flex-flow: column;

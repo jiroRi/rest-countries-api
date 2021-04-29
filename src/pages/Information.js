@@ -37,6 +37,7 @@ export const Information = ({ match }) => {
 
       mounted = false;
     };
+    // eslint-disable-next-line
   }, [information]);
 
   return (
@@ -46,7 +47,7 @@ export const Information = ({ match }) => {
         <p>loading...</p>
       ) : (
         <DetailsFull>
-          <Flag src={information.flag} alt={information.name} variant="full" />
+          <Flag flag={information.flag} alt={information.name} variant="full" />
 
           <InformationContainer>
             <Text variant="full-title">{information.name}</Text>

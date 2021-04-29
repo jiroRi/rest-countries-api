@@ -29,7 +29,7 @@ const Container = styled.div`
   min-height: 336px;
   max-width: 327px;
   border-radius: 4px;
-  box-shadow: 0px 8px 16px hsla(0, 0%, 52%, 0.15);
+  box-shadow: ${(props) => props.theme.boxShadow.card};
 
   cursor: pointer;
 

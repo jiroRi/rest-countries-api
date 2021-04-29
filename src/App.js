@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Countries, Information } from "./pages";
@@ -9,7 +9,7 @@ import { lightMode, darkMode } from "./Theme";
 import { GlobalStyle } from "./GlobalStyle";
 
 const App = () => {
-  const { isDarkMode, setIsDarkMode } = useContext(CountryContext);
+  const { isDarkMode } = useContext(CountryContext);
 
   return (
     <Router>

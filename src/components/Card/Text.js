@@ -10,7 +10,6 @@ const Container = styled.span`
   font-size: 1.5rem;
   font-weight: 300;
 
-  /* Card */
   ${(props) =>
     props.variant === "title" &&
     `
@@ -21,7 +20,7 @@ const Container = styled.span`
         @media ${props.theme.device.tablet} {
             font-size: ${props.theme.desktopFontSizes.cardTitle};
         }
-    `}
+`}
 
   ${(props) =>
     props.variant === "body" &&
@@ -42,9 +41,7 @@ const Container = styled.span`
             }
         }
     `}
-    /* Card */
 
-    /* Full Details */
     ${(props) =>
     props.variant === "full-title" &&
     `       

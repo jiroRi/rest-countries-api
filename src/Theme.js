@@ -50,7 +50,7 @@ const styles = {
   boxShadowLight: {
     header: "0px 6px 12px rgba(133, 133, 133, 0.15);",
     back: "0px 0px 16px rgba(17, 21, 23, 0.25);",
-    card: "0px 4px 8px rgba(133, 133, 133, 0.05);",
+    card: "0px 4px 8px rgba(133, 133, 133, 0.15);",
     search: "0px 0px 16px rgba(133, 133, 133, 0.2);",
     regions: "2px 6px 16px rgba(17, 21, 23, 0.125);",
     borders: "0px 0px 16px rgba(32, 44, 55, 0.15)",
@@ -60,7 +60,7 @@ const styles = {
   boxShadowDark: {
     header: "0px 6px 12px rgba(17, 21, 23, 0.15);",
     back: "0px 0px 16px rgba(17, 21, 23, 0.15);",
-    card: "0px 4px 8px rgba(17, 21, 23, 0.05);",
+    card: "0px 4px 8px rgba(17, 21, 23, 0.15);",
     search: "0px 0px 16px rgba(17, 21, 23, 0.15);",
     regions: "2px 6px 16px rgba(17, 21, 23, 0.125);",
     borders: "0px 0px 16px rgba(17, 21, 23, 0.15)",
@@ -79,6 +79,9 @@ export const lightMode = {
   cardLabel: styles.colors.gray400,
   cardValue: styles.colors.gray300,
   filterHover: styles.colors.hoverLight,
+  scrollBarTrack: styles.colors.gray50,
+  scrollBarThumb: styles.colors.gray200,
+  scrollBarThumbHover: styles.colors.gray400,
 
   desktopFontSizes: {
     title: styles.desktopFontSizes.title,
@@ -139,6 +142,9 @@ export const darkMode = {
   cardLabel: styles.colors.gray50,
   cardValue: styles.colors.gray100,
   filterHover: styles.colors.gray500,
+  scrollBarTrack: styles.colors.gray400,
+  scrollBarThumb: styles.colors.gray300,
+  scrollBarThumbHover: styles.colors.gray200,
 
   desktopFontSizes: {
     title: styles.desktopFontSizes.title,
