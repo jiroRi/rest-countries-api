@@ -19,5 +19,7 @@ export const GlobalStyle = createGlobalStyle`
         height: 1024px;
         max-width: 100vw;
         max-height: 100vh;
+
+        background-color: ${(props) => props.theme.bg};
     }
 `;

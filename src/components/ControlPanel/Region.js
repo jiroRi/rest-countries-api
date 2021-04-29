@@ -6,8 +6,25 @@ export const Region = (props) => (
 );
 
 const Container = styled.div`
-  padding: 8px 24px;
-  background-color: hotpink;
+  padding: 0.4rem 24px;
+
+  color: ${(props) => props.theme.search};
+  font-size: ${(props) => props.theme.mobileFontSizes.filter};
+  font-weight: 300;
 
   cursor: pointer;
+
+  :first-child {
+    padding-top: 1.6rem;
+    border-radius: 5px 5px 0 0;
+  }
+
+  :last-child {
+    padding-bottom: 1.6rem;
+    border-radius: 0 0 5px 5px;
+  }
+
+  &:hover {
+    background-color: ${(props) => props.theme.filterHover};
+  }
 `;

@@ -1,8 +1,40 @@
 import React from "react";
 import styled from "styled-components";
 
-export const Search = (props) => {
-  return <Input {...props} />;
-};
+import { Search as Icon } from "../Icon";
 
-const Input = styled.input``;
+export const Search = (props) => (
+  <Container>
+    <Input {...props} type="text" placeholder="Search for a country..." />
+    <Icon />
+  </Container>
+);
+
+const Container = styled.div`
+  position: relative;
+
+  width: 100%;
+  box-shadow: ${(props) => props.theme.boxShadow.search};
+  border-radius: 5px;
+
+  @media ${(props) => props.theme.device.tablet} {
+    max-width: 480px;
+  }
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 1.8rem 3.2rem 1.8rem 7.5rem;
+  background-color: ${(props) => props.theme.componentBg};
+
+  color: ${(props) => props.theme.search};
+  font-size: ${(props) => props.theme.mobileFontSizes.search};
+  letter-spacing: 1%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+
+  &::placeholder {
+    color: ${(props) => props.theme.placeholder};
+  }
+`;

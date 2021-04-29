@@ -25,7 +25,14 @@ export const Regions = (props) => {
 };
 
 const Container = styled.div`
+  position: absolute;
+  top: 6rem;
+  left: 0;
+
   display: flex;
   flex-flow: column;
-  width: 160px;
+  width: 100%;
+  background-color: ${(props) => props.theme.componentBg};
+  box-shadow: ${(props) => props.theme.boxShadow.regions};
+  border-radius: 5px;
 `;

@@ -38,28 +38,25 @@ export const ControlPanel = () => {
 
   return (
     <Container>
-      <Search
-        type="text"
-        placeholder="awit"
-        value={search}
-        onChange={(event) => searchHandler(event)}
-      />
-      <Filter
-        onClick={() => {
-          setSelectOpened(!selectOpened);
-        }}
-      >
-        {select}
-      </Filter>
-      {selectOpened ? (
-        <Regions opened={setSelectOpened}>
-          <Region onClick={() => selectHandler("Africa")}>Africa</Region>
-          <Region onClick={() => selectHandler("Americas")}>Americas</Region>
-          <Region onClick={() => selectHandler("Asia")}>Asia</Region>
-          <Region onClick={() => selectHandler("Europe")}>Europe</Region>
-          <Region onClick={() => selectHandler("Oceania")}>Oceania</Region>
-        </Regions>
-      ) : null}
+      <Search value={search} onChange={(event) => searchHandler(event)} />
+      <FilterContainer>
+        <Filter
+          onClick={() => {
+            setSelectOpened(!selectOpened);
+          }}
+        >
+          {select}
+        </Filter>
+        {selectOpened ? (
+          <Regions opened={setSelectOpened}>
+            <Region onClick={() => selectHandler("Africa")}>Africa</Region>
+            <Region onClick={() => selectHandler("Americas")}>Americas</Region>
+            <Region onClick={() => selectHandler("Asia")}>Asia</Region>
+            <Region onClick={() => selectHandler("Europe")}>Europe</Region>
+            <Region onClick={() => selectHandler("Oceania")}>Oceania</Region>
+          </Regions>
+        ) : null}
+      </FilterContainer>
     </Container>
   );
 };
@@ -68,5 +65,14 @@ const Container = styled.div`
   display: flex;
   flex-flow: column;
   width: 100%;
-  padding: 30px 20px 0 20px;
+  padding: 3rem 0;
+
+  @media ${(props) => props.theme.device.tablet} {
+    flex-flow: row;
+    justify-content: space-between;
+  }
+`;
+
+const FilterContainer = styled.div`
+  position: relative;
 `;

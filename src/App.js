@@ -1,10 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { CountryProvider } from "./CountryContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Countries, Information } from "./pages";
-import { Header } from "./containers";
+import { Header, PageContainer } from "./containers";
 import { CountryContext } from "./CountryContext";
 import { lightMode, darkMode } from "./Theme";
 import { GlobalStyle } from "./GlobalStyle";
@@ -14,13 +13,15 @@ const App = () => {
 
   return (
     <Router>
-      <GlobalStyle />
       <ThemeProvider theme={isDarkMode ? darkMode : lightMode}>
+        <GlobalStyle />
         <Header />
-        <Switch>
-          <Route path="/" exact component={Countries} />
-          <Route path="/country/:code" component={Information} />
-        </Switch>
+        <PageContainer>
+          <Switch>
+            <Route path="/" exact component={Countries} />
+            <Route path="/country/:code" component={Information} />
+          </Switch>
+        </PageContainer>
       </ThemeProvider>
     </Router>
   );

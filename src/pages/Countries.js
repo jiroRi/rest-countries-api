@@ -3,7 +3,7 @@ import { CountryContext } from "../CountryContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { Card, ControlPanel } from "../containers";
+import { Card, ControlPanel, PageContent } from "../containers";
 
 export const Countries = () => {
   const { filteredCountries, setFilteredCountries } = useContext(
@@ -22,19 +22,21 @@ export const Countries = () => {
   return (
     <>
       <ControlPanel />
-      {filteredCountries.map((country) => (
-        <Link to={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
-          <Card
-            flag={country.flag}
-            name={country.name}
-            population={country.population
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            region={country.region}
-            capital={country.capital}
-          />
-        </Link>
-      ))}
+      <PageContent>
+        {filteredCountries.map((country) => (
+          <Link to={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
+            <Card
+              flag={country.flag}
+              name={country.name}
+              population={country.population
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              region={country.region}
+              capital={country.capital}
+            />
+          </Link>
+        ))}
+      </PageContent>
     </>
   );
 };
