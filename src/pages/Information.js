@@ -45,7 +45,7 @@ export const Information = ({ match }) => {
   useEffect(() => {
     setCurrentCountry(location.pathname.replace("/country/", ""));
     // eslint-disable-next-line
-  }, [match, setCurrentCountry, setInformation]);
+  }, [match]);
 
   const goBack = () => {
     history.goBack();
