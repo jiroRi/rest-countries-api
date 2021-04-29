@@ -9,7 +9,6 @@ export const BackButton = () => {
 
   const goBack = () => {
     history.goBack();
-    console.log(history);
   };
 
   return (
