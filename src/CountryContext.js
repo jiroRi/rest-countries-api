@@ -16,7 +16,7 @@ export const CountryProvider = ({ children }) => {
     currencies: "",
     languages: "",
   });
-  const [darkMode, setDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     axios
@@ -36,8 +36,8 @@ export const CountryProvider = ({ children }) => {
         setCountryDetails,
         filteredCountries,
         setFilteredCountries,
-        darkMode,
-        setDarkMode,
+        isDarkMode,
+        setIsDarkMode,
       }}
     >
       {children}

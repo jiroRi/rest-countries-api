@@ -4,9 +4,11 @@ import styled from "styled-components";
 import { CountryContext } from "../../CountryContext";
 
 export const ThemeSwitcher = (props) => {
-  const { darkMode, setDarkMode } = useContext(CountryContext);
+  const { isDarkMode, setIsDarkMode } = useContext(CountryContext);
 
-  return <Button onClick={() => setDarkMode(!darkMode)}>Switch Theme</Button>;
+  return (
+    <Button onClick={() => setIsDarkMode(!isDarkMode)}>Switch Theme</Button>
+  );
 };
 
 const Button = styled.button``;

@@ -62,7 +62,7 @@ const styles = {
 
 export const lightMode = {
   bg: styles.colors.gray50,
-  component: styles.colors.gray100,
+  componentBg: styles.colors.gray100,
   title: styles.colors.gray500,
   themeSwitcher: styles.colors.gray500,
   placeholder: styles.colors.gray200,
@@ -70,11 +70,44 @@ export const lightMode = {
   cardTitle: styles.colors.gray500,
   cardLabel: styles.colors.gray400,
   cardValue: styles.colors.gray200,
+
+  desktopFontSizes: {
+    title: styles.desktopFontSizes.title,
+    themeSwitcher: styles.desktopFontSizes.themeSwitcher,
+    cardTitle: styles.desktopFontSizes.cardTitle,
+    cardLabel: styles.desktopFontSizes.cardLabel,
+    filter: styles.desktopFontSizes.filter,
+    regions: styles.desktopFontSizes.regions,
+    fullTitle: styles.desktopFontSizes.fullTitle,
+    fullLabel: styles.desktopFontSizes.fullLabel,
+  },
+
+  mobileFontSizes: {
+    title: styles.mobileFontSizes.title,
+    themeSwitcher: styles.mobileFontSizes.themeSwitcher,
+    cardTitle: styles.mobileFontSizes.cardTitle,
+    cardLabel: styles.mobileFontSizes.cardLabel,
+    filter: styles.mobileFontSizes.filter,
+    regions: styles.mobileFontSizes.regions,
+    fullTitle: styles.mobileFontSizes.fullTitle,
+    fullLabel: styles.mobileFontSizes.fullLabel,
+  },
+
+  device: {
+    mobileS: `(min-width: ${size.mobileS})`,
+    mobileM: `(min-width: ${size.mobileM})`,
+    mobileL: `(min-width: ${size.mobileL})`,
+    tablet: `(min-width: ${size.tablet})`,
+    laptop: `(min-width: ${size.laptop})`,
+    desktopS: `(min-width: ${size.desktopS})`,
+    desktopM: `(min-width: ${size.desktopM})`,
+    desktopL: `(min-width: ${size.desktopL})`,
+  },
 };
 
 export const darkMode = {
   bg: styles.colors.gray300,
-  component: styles.colors.gray400,
+  componentBg: styles.colors.gray400,
   title: styles.colors.gray50,
   themeSwitcher: styles.colors.gray50,
   placeholder: styles.colors.gray100,
@@ -82,4 +115,37 @@ export const darkMode = {
   cardTitle: styles.colors.gray50,
   cardLabel: styles.colors.gray50,
   cardValue: styles.colors.gray100,
+
+  desktopFontSizes: {
+    title: "2.4rem",
+    themeSwitcher: "1.5rem",
+    cardTitle: "1.8rem",
+    cardLabel: "1.4rem",
+    filter: "1.5rem",
+    regions: "1.5rem",
+    fullTitle: "3.2rem",
+    fullLabel: "1.6rem",
+  },
+
+  mobileFontSizes: {
+    title: "1.8rem",
+    themeSwitcher: "1.5rem",
+    cardTitle: "2.4rem",
+    cardLabel: "1.8rem",
+    filter: "1.5rem",
+    regions: "1.5rem",
+    fullTitle: "2.4rem",
+    fullLabel: "1.2rem",
+  },
+
+  device: {
+    mobileS: `(min-width: ${size.mobileS})`,
+    mobileM: `(min-width: ${size.mobileM})`,
+    mobileL: `(min-width: ${size.mobileL})`,
+    tablet: `(min-width: ${size.tablet})`,
+    laptop: `(min-width: ${size.laptop})`,
+    desktopS: `(min-width: ${size.desktopS})`,
+    desktopM: `(min-width: ${size.desktopM})`,
+    desktopL: `(min-width: ${size.desktopL})`,
+  },
 };

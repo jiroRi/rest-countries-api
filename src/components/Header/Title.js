@@ -11,6 +11,15 @@ export const Title = (props) => (
 
 const Text = styled.h1`
   padding: 8px 24px;
+  margin: 0;
+
+  color: ${(props) => props.theme.title};
+  font-size: ${(props) => props.theme.mobileFontSizes.title};
+  font-weight: 800;
 
   cursor: pointer;
+
+  @media ${(props) => props.theme.device.tablet} {
+    font-size: ${(props) => props.theme.desktopFontSizes.title};
+  }
 `;

@@ -3,9 +3,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import { CountryProvider } from "./CountryContext";
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CountryProvider>
+      <App />
+    </CountryProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

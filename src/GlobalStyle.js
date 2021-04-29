@@ -10,6 +10,10 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
     }
 
+    a {
+        text-decoration: none;
+    }
+
     body {
         width: 100vw;
         height: 1024px;
