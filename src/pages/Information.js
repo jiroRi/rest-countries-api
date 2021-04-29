@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 import { BackButton } from "../components/ControlPanel";
 import { Flag, DetailsFull, Text, BorderButton } from "../components/Card";
@@ -16,6 +16,7 @@ export const Information = ({ match }) => {
   });
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const history = useHistory();
 
   const setBorderAsLink = (border) => {
     setCurrentCountry(border);
@@ -36,16 +37,23 @@ export const Information = ({ match }) => {
     }, 150);
 
     return () => {
-      setCurrentCountry(location.pathname.replace("/country/", ""));
       clearTimeout(timer);
       mounted = false;
     };
+  }, [currentCountry]);
+
+  useEffect(() => {
+    setCurrentCountry(location.pathname.replace("/country/", ""));
     // eslint-disable-next-line
-  }, [currentCountry, location.pathname, information]);
+  }, [match, setCurrentCountry, setInformation]);
+
+  const goBack = () => {
+    history.goBack();
+  };
 
   return (
     <>
-      <BackButton />
+      <BackButton onClick={goBack} />
       {loading ? (
         <Spinner />
       ) : (

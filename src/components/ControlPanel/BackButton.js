@@ -1,18 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 
 import { Back } from "../Icon";
 
-export const BackButton = () => {
-  const history = useHistory();
-
-  const goBack = () => {
-    history.goBack();
-  };
-
+export const BackButton = (props) => {
   return (
-    <Button onClick={goBack}>
+    <Button {...props}>
       <Back />
       Back
     </Button>
