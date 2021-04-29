@@ -8,5 +8,15 @@ export const DetailsSummary = (props) => {
 const Container = styled.div`
   display: flex;
   flex-flow: column;
-  padding: 32px;
+  padding: 2.4rem 3.2rem;
+
+  /* title */
+  & > :first-child {
+    margin-bottom: 1.5rem;
+  }
+
+  /* others */
+  & > :not(:first-child) {
+    margin-bottom: 0.5rem;
+  }
 `;
