@@ -10,7 +10,7 @@ export const ThemeSwitcher = (props) => {
   return (
     <Button onClick={() => setIsDarkMode(!isDarkMode)}>
       <Moon />
-      Dark Mode
+      {isDarkMode ? "Light Mode" : "Dark Mode"}
     </Button>
   );
 };

@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 import { BackButton } from "../components/ControlPanel";
 import { Flag, DetailsFull, Text, BorderButton } from "../components/Card";
+import { Spinner } from "../containers";
 
 export const Information = ({ match }) => {
   const [currentCountry, setCurrentCountry] = useState(match.params.code);
@@ -44,7 +45,7 @@ export const Information = ({ match }) => {
     <>
       <BackButton />
       {loading ? (
-        <p>loading...</p>
+        <Spinner />
       ) : (
         <DetailsFull>
           <Flag flag={information.flag} alt={information.name} variant="full" />
@@ -100,9 +101,11 @@ export const Information = ({ match }) => {
               </SubInformation>
             </InformationDetails>
             <BorderGroup>
-              <Text variant="full-body">
-                <strong>Borders: </strong>
-              </Text>
+              {information.borders.length === 0 ? null : (
+                <Text variant="full-body">
+                  <strong>Borders: </strong>
+                </Text>
+              )}
               {information.borders.map((border) => (
                 <Link to={`/country/${border}`} key={border}>
                   <BorderButton onClick={() => setBorderAsLink(border)}>

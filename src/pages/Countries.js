@@ -3,13 +3,12 @@ import { CountryContext } from "../CountryContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { Card, ControlPanel, PageContent } from "../containers";
+import { Card, ControlPanel, PageContent, Spinner } from "../containers";
 
 export const Countries = () => {
   const { filteredCountries, setFilteredCountries } = useContext(
     CountryContext
   );
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export const Countries = () => {
   return (
     <>
       <ControlPanel />
-      <PageContent>{loading ? <h1>loading...</h1> : countries}</PageContent>
+      <PageContent>{loading ? <Spinner /> : countries}</PageContent>
     </>
   );
 };

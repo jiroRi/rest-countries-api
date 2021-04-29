@@ -36,6 +36,7 @@ export const ControlPanel = () => {
       return country.region.toLowerCase() === select.toLowerCase();
     });
     setFilteredCountries(filter);
+    setSearch("");
     // eslint-disable-next-line
   }, [select]);
 
