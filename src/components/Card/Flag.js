@@ -11,6 +11,8 @@ const Image = styled.img`
   height: 160px;
   min-height: 160px;
   border-radius: 4px 4px 0px 0px;
+  object-fit: cover;
+  object-position: 0;
 
   ${(props) =>
     props.variant === "full" &&
@@ -19,6 +21,8 @@ const Image = styled.img`
     height: auto;
     margin-bottom: 4rem;
     box-shadow: ${props.theme.boxShadow.flag};
+    object-fit: cover;
+    object-position: 0;
 
     @media ${props.theme.device.tablet} {
       height: auto;

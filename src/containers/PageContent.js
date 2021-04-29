@@ -8,14 +8,14 @@ const Body = styled.div`
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 24px;
+  grid-gap: 2.4rem;
 
   overflow-y: scroll;
   overflow-x: hidden;
 
   & a {
     display: inline-block;
-    margin: auto;
+    max-width: 264px;
   }
 
   @media ${(props) => props.theme.device.tablet} {
@@ -23,17 +23,17 @@ const Body = styled.div`
   }
 
   @media ${(props) => props.theme.device.laptop} {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 37.5px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3.75rem;
   }
 
   @media (min-width: 1366px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 37.5px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 4rem;
   }
 
   @media ${(props) => props.theme.device.desktopS} {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-grap: 7.5rem;
   }
 
   @media ${(props) => props.theme.device.desktopM} {
