@@ -13,7 +13,7 @@ const Button = styled.button`
 
   color: ${(props) => props.theme.title};
 
-  font-weight: 600;
+  font-weight: 800;
 
   outline: none;
   border: none;
