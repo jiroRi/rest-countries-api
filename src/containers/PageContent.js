@@ -16,6 +16,12 @@ const Body = styled.div`
   & a {
     display: inline-block;
     max-width: 264px;
+
+    margin: 0 auto;
+
+    @media ${(props) => props.theme.device.laptop} {
+      margin: 0;
+    }
   }
 
   @media ${(props) => props.theme.device.tablet} {
