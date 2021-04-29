@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CountryContext } from "../CountryContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -10,33 +10,36 @@ export const Countries = () => {
     CountryContext
   );
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then((response) => {
         setFilteredCountries(response.data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
 
+  const countries = filteredCountries.map((country) => (
+    <Link to={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
+      <Card
+        flag={country.flag}
+        name={country.name}
+        population={country.population
+          .toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        region={country.region}
+        capital={country.capital}
+      />
+    </Link>
+  ));
+
   return (
     <>
       <ControlPanel />
-      <PageContent>
-        {filteredCountries.map((country) => (
-          <Link to={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
-            <Card
-              flag={country.flag}
-              name={country.name}
-              population={country.population
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              region={country.region}
-              capital={country.capital}
-            />
-          </Link>
-        ))}
-      </PageContent>
+      <PageContent>{loading ? <h1>loading...</h1> : countries}</PageContent>
     </>
   );
 };

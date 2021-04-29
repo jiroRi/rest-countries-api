@@ -24,13 +24,14 @@ const styles = {
   desktopFontSizes: {
     title: "2.4rem",
     themeSwitcher: "1.5rem",
-    cardTitle: "1.8rem",
+    cardTitle: "1.6rem",
     cardLabel: "1.4rem",
     filter: "1.5rem",
     regions: "1.5rem",
     fullTitle: "3.2rem",
     fullLabel: "1.6rem",
     search: "1.4rem",
+    border: "1.5rem",
   },
 
   mobileFontSizes: {
@@ -43,6 +44,7 @@ const styles = {
     fullTitle: "2.4rem",
     fullLabel: "1.2rem",
     search: "1.4rem",
+    border: "1.8rem",
   },
 
   boxShadowLight: {
@@ -52,6 +54,7 @@ const styles = {
     search: "0px 0px 16px rgba(133, 133, 133, 0.2);",
     regions: "2px 6px 16px rgba(17, 21, 23, 0.125);",
     borders: "0px 0px 16px rgba(32, 44, 55, 0.15)",
+    flag: "0 0 24px rgba(17, 21, 23, 0.15)",
   },
 
   boxShadowDark: {
@@ -61,6 +64,7 @@ const styles = {
     search: "0px 0px 16px rgba(17, 21, 23, 0.15);",
     regions: "2px 6px 16px rgba(17, 21, 23, 0.125);",
     borders: "0px 0px 16px rgba(17, 21, 23, 0.15)",
+    flag: "0 0 24px rgba(17, 21, 23, 0.15)",
   },
 };
 
@@ -73,7 +77,7 @@ export const lightMode = {
   search: styles.colors.gray500,
   cardTitle: styles.colors.gray500,
   cardLabel: styles.colors.gray400,
-  cardValue: styles.colors.gray200,
+  cardValue: styles.colors.gray300,
   filterHover: styles.colors.hoverLight,
 
   desktopFontSizes: {
@@ -86,6 +90,7 @@ export const lightMode = {
     fullTitle: styles.desktopFontSizes.fullTitle,
     fullLabel: styles.desktopFontSizes.fullLabel,
     search: styles.desktopFontSizes.search,
+    border: styles.desktopFontSizes.border,
   },
 
   mobileFontSizes: {
@@ -98,6 +103,7 @@ export const lightMode = {
     fullTitle: styles.mobileFontSizes.fullTitle,
     fullLabel: styles.mobileFontSizes.fullLabel,
     search: styles.mobileFontSizes.search,
+    border: styles.mobileFontSizes.border,
   },
 
   device: {
@@ -118,6 +124,7 @@ export const lightMode = {
     search: styles.boxShadowLight.search,
     regions: styles.boxShadowLight.regions,
     borders: styles.boxShadowLight.borders,
+    flag: styles.boxShadowLight.flag,
   },
 };
 
@@ -143,6 +150,7 @@ export const darkMode = {
     fullTitle: styles.desktopFontSizes.fullTitle,
     fullLabel: styles.desktopFontSizes.fullLabel,
     search: styles.desktopFontSizes.search,
+    border: styles.desktopFontSizes.border,
   },
 
   mobileFontSizes: {
@@ -155,6 +163,7 @@ export const darkMode = {
     fullTitle: styles.mobileFontSizes.fullTitle,
     fullLabel: styles.mobileFontSizes.fullLabel,
     search: styles.mobileFontSizes.search,
+    border: styles.mobileFontSizes.border,
   },
 
   device: {
@@ -175,5 +184,6 @@ export const darkMode = {
     search: styles.boxShadowDark.search,
     regions: styles.boxShadowDark.regions,
     borders: styles.boxShadowDark.borders,
+    flag: styles.boxShadowDark.flag,
   },
 };

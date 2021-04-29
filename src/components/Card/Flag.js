@@ -5,7 +5,7 @@ export const Flag = (props) => {
   return <Image {...props} />;
 };
 
-const Image = styled.div`
+const Image = styled.img`
   width: 100%;
   min-width: 264px;
   height: 160px;
@@ -14,4 +14,31 @@ const Image = styled.div`
 
   background-image: url(${(props) => props.flag});
   background-size: cover;
+
+  ${(props) =>
+    props.variant === "full" &&
+    `
+    width: 100%;
+    height: auto;
+    margin-bottom: 4rem;
+    box-shadow: ${props.theme.boxShadow.flag};
+
+    @media ${props.theme.device.tablet} {
+      height: auto;
+    }
+
+    @media ${props.theme.device.laptop} {
+      max-width: auto;
+    }
+
+    @media ${props.theme.device.desktopS} {
+      max-width: 560px;
+      height: 400px;
+    }
+
+    @media ${props.theme.device.desktopM} {
+      max-width: auto;
+      height: auto;
+    }
+  `}
 `;

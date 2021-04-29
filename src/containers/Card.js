@@ -26,9 +26,8 @@ export const Card = (props) => {
 const Container = styled.div`
   display: flex;
   flex-flow: column;
-  width: 100%;
-  max-width: 327px;
   min-height: 336px;
+  max-width: 327px;
   border-radius: 4px;
   box-shadow: 0px 8px 16px hsla(0, 0%, 52%, 0.15);
 

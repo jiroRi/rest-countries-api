@@ -24,7 +24,16 @@ const Body = styled.div`
     grid-gap: 37.5px;
   }
 
+  @media (min-width: 1366px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 37.5px;
+  }
+
   @media ${(props) => props.theme.device.desktopS} {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media ${(props) => props.theme.device.desktopM} {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 `;
