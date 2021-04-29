@@ -11,12 +11,14 @@ export const ControlPanel = () => {
   const [selectOpened, setSelectOpened] = useState(false);
 
   useEffect(() => {
-    const filter = countries.filter((country) => {
-      return country.region.toLowerCase() === select.toLowerCase();
-    });
-    setFilteredCountries(filter);
-
     const result = countries.filter((country) => {
+      if (select === "Filter by Region") {
+        return (
+          country.name.toLowerCase().includes(search.toLowerCase()) ||
+          country.region.toLowerCase().includes(search.toLowerCase()) ||
+          country.capital.toLowerCase().includes(search.toLowerCase())
+        );
+      }
       return (
         country.region === select &&
         (country.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -24,8 +26,16 @@ export const ControlPanel = () => {
           country.capital.toLowerCase().includes(search.toLowerCase()))
       );
     });
+
     setFilteredCountries(result);
-  }, [search, select]);
+  }, [search]);
+
+  useEffect(() => {
+    const filter = countries.filter((country) => {
+      return country.region.toLowerCase() === select.toLowerCase();
+    });
+    setFilteredCountries(filter);
+  }, [select]);
 
   const searchHandler = (event) => {
     setSearch(event.target.value);

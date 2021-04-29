@@ -16,8 +16,11 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   min-height: 8rem;
-  padding: 0 8rem;
 
   background-color: ${(props) => props.theme.componentBg};
   box-shadow: ${(props) => props.theme.boxShadow.header};
+
+  @media ${(props) => props.theme.device.tablet} {
+    padding: 0 8rem;
+  }
 `;

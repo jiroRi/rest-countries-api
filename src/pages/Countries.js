@@ -40,16 +40,3 @@ export const Countries = () => {
     </>
   );
 };
-
-/* setCountryDetails({
-    nativeName: currentCountry[0].nativeName,
-    population: currentCountry[0].population,
-    region: currentCountry[0].region,
-    subRegion: currentCountry[0].subregion,
-    capital: currentCountry[0].capital,
-    topLevelDomain: currentCountry[0].topLevelDomain,
-    currencies: currentCountry[0].currencies,
-    languages: currentCountry[0].languages
-      .map((lang) => lang.name)
-      .join(", "),
-  }); */

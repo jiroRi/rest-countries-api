@@ -16,6 +16,7 @@ const Container = styled.div`
   width: 100%;
   box-shadow: ${(props) => props.theme.boxShadow.search};
   border-radius: 5px;
+  margin-bottom: 48px;
 
   @media ${(props) => props.theme.device.tablet} {
     max-width: 480px;
