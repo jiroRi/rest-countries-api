@@ -32,10 +32,14 @@ export const ControlPanel = () => {
   }, [search]);
 
   useEffect(() => {
-    const filter = countries.filter((country) => {
-      return country.region.toLowerCase() === select.toLowerCase();
-    });
-    setFilteredCountries(filter);
+    if (select !== "All") {
+      const filter = countries.filter((country) => {
+        return country.region.toLowerCase() === select.toLowerCase();
+      });
+      setFilteredCountries(filter);
+    } else {
+      setFilteredCountries(countries);
+    }
     setSearch("");
     // eslint-disable-next-line
   }, [select]);
@@ -62,6 +66,14 @@ export const ControlPanel = () => {
         </Filter>
         {selectOpened ? (
           <Regions setOpened={setSelectOpened} opened={selectOpened}>
+            <Region
+              onClick={() => {
+                setSelect("All");
+                setSelectOpened((prevState) => !prevState);
+              }}
+            >
+              All
+            </Region>
             <Region onClick={() => selectHandler("Africa")}>Africa</Region>
             <Region onClick={() => selectHandler("Americas")}>Americas</Region>
             <Region onClick={() => selectHandler("Asia")}>Asia</Region>
