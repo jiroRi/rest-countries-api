@@ -11,7 +11,7 @@ const Body = styled.div`
   max-height: calc(100vh - 8rem);
 
   @media ${(props) => props.theme.device.laptop} {
-    padding: 0 8rem 4.8rem 8rem;
+    padding: 0 4rem 4.8rem 4rem;
     height: calc(100vh - 8rem);
   }
 

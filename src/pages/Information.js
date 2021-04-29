@@ -149,15 +149,20 @@ const InformationContainer = styled.div`
 
 const InformationDetails = styled.div`
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: space-between;
   width: 100%;
   max-width: 57.6rem;
+
+  @media ${(props) => props.theme.device.tablet} {
+    flex-flow: row;
+  }
 `;
 
 const MainInformation = styled.div`
   display: flex;
   flex-flow: column;
+  width: 100%;
 
   @media ${(props) => props.theme.device.laptop} {
     margin-bottom: 4rem;
@@ -167,6 +172,7 @@ const MainInformation = styled.div`
 const SubInformation = styled.div`
   display: flex;
   flex-flow: column;
+  width: 100%;
 
   > * {
     margin-bottom: 1rem;
