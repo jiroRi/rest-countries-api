@@ -23,23 +23,25 @@ export const Information = ({ match }) => {
 
   useEffect(() => {
     let mounted = true;
-    axios
-      .get(`https://restcountries.eu/rest/v2/alpha/${currentCountry}`)
-      .then((response) => {
-        if (mounted) {
-          setInformation(response.data);
-          setLoading(false);
-        }
-      })
-      .catch((err) => console.log(err));
+    let timer = setTimeout(() => {
+      axios
+        .get(`https://restcountries.eu/rest/v2/alpha/${currentCountry}`)
+        .then((response) => {
+          if (mounted) {
+            setInformation(response.data);
+            setLoading(false);
+          }
+        })
+        .catch((err) => console.log(err));
+    }, 150);
 
     return () => {
       setCurrentCountry(location.pathname.replace("/country/", ""));
-
+      clearTimeout(timer);
       mounted = false;
     };
     // eslint-disable-next-line
-  }, [information]);
+  }, [currentCountry, location.pathname, information]);
 
   return (
     <>
@@ -108,7 +110,12 @@ export const Information = ({ match }) => {
               )}
               {information.borders.map((border) => (
                 <Link to={`/country/${border}`} key={border}>
-                  <BorderButton onClick={() => setBorderAsLink(border)}>
+                  <BorderButton
+                    onClick={() => {
+                      setBorderAsLink(border);
+                      setLoading(true);
+                    }}
+                  >
                     {border}
                   </BorderButton>
                 </Link>
