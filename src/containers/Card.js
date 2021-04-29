@@ -20,10 +20,15 @@ export const Card = (props) => {
 const Container = styled.div`
   display: flex;
   flex-flow: column;
-  width: 246px;
-  max-height: 420px;
+  width: 100%;
+  max-width: 327px;
+  min-height: 420px;
   border-radius: 4px;
   box-shadow: 0px 8px 16px hsla(0, 0%, 52%, 0.15);
 
   cursor: pointer;
+
+  @media ${(props) => props.theme.device.tablet} {
+    max-width: 264px;
+  }
 `;

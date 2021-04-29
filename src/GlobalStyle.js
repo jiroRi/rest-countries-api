@@ -15,9 +15,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        width: 100vw;
-        height: 1024px;
-        max-width: 100vw;
+        width: 100%;
+        max-width: 100%;
         max-height: 100vh;
 
         background-color: ${(props) => props.theme.bg};

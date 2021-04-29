@@ -7,6 +7,8 @@ const Body = styled.div`
   display: flex;
   flex-flow: column;
   padding: 0 2rem;
+  width: 100%;
+  max-height: calc(100vh - 80px);
 
   @media ${(props) => props.theme.device.laptop} {
     padding: 0 8rem;

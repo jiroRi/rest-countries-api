@@ -6,21 +6,25 @@ export const PageContent = (props) => <Body>{props.children}</Body>;
 const Body = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 75px;
+  grid-gap: 24px;
+
+  overflow-y: scroll;
 
   & a {
-    max-width: 264px;
+    display: inline-block;
+    margin: auto;
   }
 
   @media ${(props) => props.theme.device.tablet} {
     grid-template-columns: 1fr 1fr;
-
-    overflow-y: scroll;
   }
 
   @media ${(props) => props.theme.device.laptop} {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 37.5px;
+  }
 
-    overflow-y: scroll;
+  @media ${(props) => props.theme.device.desktopS} {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 `;
