@@ -24,7 +24,7 @@ const styles = {
   desktopFontSizes: {
     title: "2.4rem",
     themeSwitcher: "1.5rem",
-    cardTitle: "1.6rem",
+    cardTitle: "1.8rem",
     cardLabel: "1.4rem",
     filter: "1.4rem",
     regions: "1.4rem",

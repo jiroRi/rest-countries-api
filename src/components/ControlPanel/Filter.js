@@ -11,8 +11,6 @@ export const Filter = (props) => (
 );
 
 const Button = styled.button`
-  position: relative;
-
   min-width: 200px;
   padding: 1.8rem 2.4rem;
   background-color: ${(props) => props.theme.componentBg};

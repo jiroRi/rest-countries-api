@@ -85,7 +85,7 @@ export const ControlPanel = () => {
         </Filter>
         {selectOpened ? (
           <Regions>
-            <Region onClick={() => selectHandler("All")}>All</Region>
+            {/* <Region onClick={() => selectHandler("All")}>All</Region> */}
             <Region onClick={() => selectHandler("Africa")}>Africa</Region>
             <Region onClick={() => selectHandler("Americas")}>America</Region>
             <Region onClick={() => selectHandler("Asia")}>Asia</Region>

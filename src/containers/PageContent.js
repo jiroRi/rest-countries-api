@@ -5,12 +5,13 @@ export const PageContent = (props) => <Body>{props.children}</Body>;
 
 const Body = styled.div`
   position: relative;
+  z-index: 0;
 
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2.4rem;
 
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 
   & a {
