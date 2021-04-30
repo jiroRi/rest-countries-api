@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import styled from "styled-components";
 
 import { CountryContext } from "../CountryContext";
@@ -10,9 +10,19 @@ export const ControlPanel = () => {
   const [select, setSelect] = useState("Filter by Region");
   const [selectOpened, setSelectOpened] = useState(true);
 
+  const selectRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", closeSelectHandler);
+    return () => {
+      document.removeEventListener("mousedown", closeSelectHandler);
+    };
+    // eslint-disable-next-line
+  }, []);
+
   useEffect(() => {
     const result = countries.filter((country) => {
-      if (select === "Filter by Region") {
+      if (select === "Filter by Region" || select === "All") {
         return (
           country.name.toLowerCase().includes(search.toLowerCase()) ||
           country.region.toLowerCase().includes(search.toLowerCase()) ||
@@ -32,14 +42,17 @@ export const ControlPanel = () => {
   }, [search]);
 
   useEffect(() => {
+    if (select === "All") {
+      setFilteredCountries(countries);
+    }
+
     if (select !== "All") {
       const filter = countries.filter((country) => {
         return country.region.toLowerCase() === select.toLowerCase();
       });
       setFilteredCountries(filter);
-    } else {
-      setFilteredCountries(countries);
     }
+
     setSearch("");
     // eslint-disable-next-line
   }, [select]);
@@ -53,10 +66,16 @@ export const ControlPanel = () => {
     setSelectOpened((prevState) => !prevState);
   };
 
+  const closeSelectHandler = (event) => {
+    if (selectRef.current.contains(event.target)) return;
+
+    setSelectOpened(!selectOpened);
+  };
+
   return (
     <Container>
       <Search value={search} onChange={(event) => searchHandler(event)} />
-      <FilterContainer>
+      <FilterContainer ref={selectRef}>
         <Filter
           onClick={() => {
             setSelectOpened(!selectOpened);
@@ -65,15 +84,8 @@ export const ControlPanel = () => {
           {select}
         </Filter>
         {selectOpened ? (
-          <Regions setOpened={setSelectOpened} opened={selectOpened}>
-            {/* <Region
-              onClick={() => {
-                setSelect("All");
-                setSelectOpened((prevState) => !prevState);
-              }}
-            >
-              All
-            </Region> */}
+          <Regions>
+            <Region onClick={() => selectHandler("All")}>All</Region>
             <Region onClick={() => selectHandler("Africa")}>Africa</Region>
             <Region onClick={() => selectHandler("Americas")}>America</Region>
             <Region onClick={() => selectHandler("Asia")}>Asia</Region>
