@@ -6,10 +6,10 @@ export const Region = (props) => (
 );
 
 const Container = styled.div`
-  padding: 0.4rem 24px;
+  padding: 0.35rem 24px;
 
   color: ${(props) => props.theme.search};
-  font-size: ${(props) => props.theme.mobileFontSizes.filter};
+  font-size: ${(props) => props.theme.mobileFontSizes.regions};
   font-weight: 300;
 
   cursor: pointer;

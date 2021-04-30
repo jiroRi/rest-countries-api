@@ -39,7 +39,7 @@ const Body = styled.div`
   }
 
   @media ${(props) => props.theme.device.desktopS} {
-    grid-grap: 7.5rem;
+    grid-gap: 7.5rem;
   }
 
   @media ${(props) => props.theme.device.desktopM} {

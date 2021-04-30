@@ -14,13 +14,9 @@ const Container = styled.div`
   position: relative;
 
   width: 100%;
+  max-width: 48rem;
   box-shadow: ${(props) => props.theme.boxShadow.search};
   border-radius: 5px;
-  margin-bottom: 48px;
-
-  @media ${(props) => props.theme.device.tablet} {
-    max-width: 480px;
-  }
 `;
 
 const Input = styled.input`

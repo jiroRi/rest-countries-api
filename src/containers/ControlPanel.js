@@ -8,7 +8,7 @@ export const ControlPanel = () => {
   const [search, setSearch] = useState("");
   const { setFilteredCountries, countries } = useContext(CountryContext);
   const [select, setSelect] = useState("Filter by Region");
-  const [selectOpened, setSelectOpened] = useState(false);
+  const [selectOpened, setSelectOpened] = useState(true);
 
   useEffect(() => {
     const result = countries.filter((country) => {
@@ -66,16 +66,16 @@ export const ControlPanel = () => {
         </Filter>
         {selectOpened ? (
           <Regions setOpened={setSelectOpened} opened={selectOpened}>
-            <Region
+            {/* <Region
               onClick={() => {
                 setSelect("All");
                 setSelectOpened((prevState) => !prevState);
               }}
             >
               All
-            </Region>
+            </Region> */}
             <Region onClick={() => selectHandler("Africa")}>Africa</Region>
-            <Region onClick={() => selectHandler("Americas")}>Americas</Region>
+            <Region onClick={() => selectHandler("Americas")}>America</Region>
             <Region onClick={() => selectHandler("Asia")}>Asia</Region>
             <Region onClick={() => selectHandler("Europe")}>Europe</Region>
             <Region onClick={() => selectHandler("Oceania")}>Oceania</Region>
@@ -95,9 +95,12 @@ const Container = styled.div`
   @media ${(props) => props.theme.device.tablet} {
     flex-flow: row;
     justify-content: space-between;
+
+    padding: 4.8rem 0;
   }
 `;
 
 const FilterContainer = styled.div`
   position: relative;
+  max-height: 5.6rem;
 `;

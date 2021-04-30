@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { CountryContext } from "../../CountryContext";
-import { Moon } from "../Icon";
+import { Moon, Sun } from "../Icon";
 
 export const ThemeSwitcher = (props) => {
   const { isDarkMode, setIsDarkMode } = useContext(CountryContext);
 
   return (
     <Button onClick={() => setIsDarkMode(!isDarkMode)}>
-      <Moon />
+      {isDarkMode ? <Sun /> : <Moon />}
       {isDarkMode ? "Light Mode" : "Dark Mode"}
     </Button>
   );
@@ -18,7 +18,7 @@ export const ThemeSwitcher = (props) => {
 const Button = styled.button`
   display: flex;
   align-items: center;
-  padding: 0.8rem 2.4rem;
+  padding: 0.8rem 0;
   background-color: ${(props) => props.theme.componentBg};
 
   color: ${(props) => props.theme.themeSwitcher};

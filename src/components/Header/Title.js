@@ -10,7 +10,7 @@ export const Title = (props) => (
 );
 
 const Text = styled.h1`
-  padding: 8px 24px;
+  padding: 0.8rem 0;
   margin: 0;
 
   color: ${(props) => props.theme.title};
