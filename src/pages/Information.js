@@ -9,12 +9,8 @@ import { Spinner } from "../containers";
 
 export const Information = ({ match }) => {
   const [currentCountry, setCurrentCountry] = useState(match.params.code);
-  const [information, setInformation] = useState({
-    borders: [],
-    currencies: [],
-    languages: [],
-  });
-  const [loading, setLoading] = useState(true);
+  const [information, setInformation] = useState({});
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const history = useHistory();
 
@@ -23,23 +19,17 @@ export const Information = ({ match }) => {
   };
 
   useEffect(() => {
-    let mounted = true;
-    let timer = setTimeout(() => {
-      axios
-        .get(`https://restcountries.eu/rest/v2/alpha/${currentCountry}`)
-        .then((response) => {
-          if (mounted) {
-            setInformation(response.data);
-            setLoading(false);
-          }
-        })
-        .catch((err) => console.log(err));
-    }, 150);
-
-    return () => {
-      clearTimeout(timer);
-      mounted = false;
-    };
+    setLoading(true);
+    axios
+      .get(
+        `https://restcountries.com/v3.1/alpha/${currentCountry}`
+      )
+      .then((response) => {
+        setInformation(response.data[0]);
+        console.log("information", response.data[0]);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
   }, [currentCountry]);
 
   useEffect(() => {
@@ -58,20 +48,24 @@ export const Information = ({ match }) => {
         <Spinner />
       ) : (
         <DetailsFull>
-          <Flag flag={information.flag} alt={information.name} variant="full" />
+          <Flag
+            flag={information?.flags?.svg}
+            alt={information.name?.official}
+            variant="full"
+          />
 
           <InformationContainer>
-            <Text variant="full-title">{information.name}</Text>
+            <Text variant="full-title">{information.name?.official}</Text>
             <InformationDetails>
               <MainInformation>
                 <Text variant="full-body">
                   <strong>Native Name: </strong>
-                  {information.nativeName}
+                  {information.name && Object.values(information.name.nativeName)[Object.values(information.name.nativeName).length - 1].common}
                 </Text>
                 <Text variant="full-body">
                   <strong>Population: </strong>
-                  {information.population
-                    .toString()
+                  {information?.population
+                    ?.toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </Text>
                 <Text variant="full-body">
@@ -84,39 +78,39 @@ export const Information = ({ match }) => {
                 </Text>
                 <Text variant="full-body">
                   <strong>Capital: </strong>
-                  {information.capital}
+                  {information?.capital?.map(cap => cap)}
                 </Text>
               </MainInformation>
               <SubInformation>
                 <Text variant="full-body">
                   <strong>Top Level Domain: </strong>
-                  {information.topLevelDomain}
+                  {information?.tld?.map(tld => tld)}
                 </Text>
                 <TextGroup>
                   <strong>Currencies: </strong>
-                  {information.currencies.map((currency, index) => (
-                    <Text key={currency.code} variant="full-group">
+                  {information.currencies && Object.values(information.currencies).map((currency, index) => (
+                    <Text key={currency.name} variant="full-group">
                       {(index ? ", " : "") + currency.name}
                     </Text>
                   ))}
                 </TextGroup>
                 <TextGroup>
                   <strong>Languages:</strong>
-                  {information.languages.map((language, index) => (
-                    <Text key={language.iso639_2} variant="full-group">
-                      {(index ? ", " : "") + language.name}
+                  {information.languages && Object.values(information.languages).map((language, index) => (
+                    <Text key={language} variant="full-group">
+                      {(index ? ", " : "") + language}
                     </Text>
                   ))}
                 </TextGroup>
               </SubInformation>
             </InformationDetails>
             <BorderGroup>
-              {information.borders.length === 0 ? null : (
+              {information?.borders?.length && (
                 <Text variant="full-body">
                   <strong>Borders: </strong>
                 </Text>
               )}
-              {information.borders.map((border) => (
+              {information?.borders?.map((border) => (
                 <Link to={`/country/${border}`} key={border}>
                   <BorderButton
                     onClick={() => {

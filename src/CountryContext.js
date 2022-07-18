@@ -20,7 +20,7 @@ export const CountryProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("https://restcountries.eu/rest/v2/all")
+      .get("https://restcountries.com/v3.1/all")
       .then((response) => {
         setCountries(response.data);
       })
