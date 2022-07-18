@@ -24,16 +24,14 @@ export const ControlPanel = () => {
     const result = countries.filter((country) => {
       if (select === "Filter by Region" || select === "All") {
         return (
-          country.name.toLowerCase().includes(search.toLowerCase()) ||
-          country.region.toLowerCase().includes(search.toLowerCase()) ||
-          country.capital.toLowerCase().includes(search.toLowerCase())
+          country.name.official.toLowerCase().includes(search.toLowerCase()) ||
+          country.region.toLowerCase().includes(search.toLowerCase())
         );
       }
       return (
         country.region === select &&
-        (country.name.toLowerCase().includes(search.toLowerCase()) ||
-          country.region.toLowerCase().includes(search.toLowerCase()) ||
-          country.capital.toLowerCase().includes(search.toLowerCase()))
+        (country.name.official.toLowerCase().includes(search.toLowerCase()) ||
+          country.region.toLowerCase().includes(search.toLowerCase()))
       );
     });
 
